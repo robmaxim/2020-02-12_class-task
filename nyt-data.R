@@ -59,10 +59,13 @@ nh_counties_all <- bind_cols(select(nh_counties, name, fips), nh_counties$result
 head(nh_counties_all)
 ```
 
-Test your knowledge: Write the code to pivot the New Hampshire data to a longer form, then back. Note the inclusion of the FIPS code, which is unique to each county, changes the code"
+# Test your knowledge: Write the code to pivot the New Hampshire data to a longer form, then back. Note the inclusion of the FIPS code, which is unique to each county, changes the code"
 
 ```{r}
+nh_counties_long <- nh_counties_all %>%
+  pivot_longer(cols = c(-name, -fips), names_to = "candidate", values_to = "votes")
 
+head(nh_counties_long, n = 20)
 
 ```
 
